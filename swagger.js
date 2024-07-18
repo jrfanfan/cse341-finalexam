@@ -20,7 +20,7 @@ const swaggerDefinition = {
         bearerAuth: []
     }],
     servers:[
-    {url: "http://localhost:8080"
+    {url: "https://cse341-finalexam.onrender.com"
     },
     ],
 };
