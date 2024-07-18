@@ -1,0 +1,37 @@
+<p id="data3" style="color: black;"></p>
+
+<script>
+    async function apiFetch(url) {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    }
+    async function deleteData() {
+        const data = await apiFetch('/data');
+        let text = "";
+        text = `<table>`
+        text += `<tr>`
+        text +=`<th>Firstname</th>`
+        text +=`<th>Lastname</th>`
+        text +=`<th>Email</th>`
+        text +=`<th>ID</th>`
+        text +=`<th>Delete</th>`
+        text +=`</tr>`
+        for (let i = 0; i < data.length; i++) {
+            text += `<tr>`
+            text += `<td id="fname">` + data[i].firstname  
+            text += `</td>` 
+            text += `<td>` + data[i].lastname
+            text += `</td>` 
+            text += `<td>` + data[i].email 
+            text += `</td>` 
+            text += `<td>` + data[i].idnumber
+            text += `</td>` 
+            text += `<td><a href="/datadel/${data[i]._id}">delete</a></td>`
+            text += `</tr>`  
+        }
+        text += `</table>`
+        document.getElementById("data3").innerHTML= text;
+    }
+    deleteData();
+</script>
